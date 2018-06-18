@@ -1,19 +1,19 @@
 buildscript {
-    repositories {
-        jcenter()
-        maven { url = "http://files.minecraftforge.net/maven" }
-    }
-    dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-    }
+	repositories {
+		jcenter()
+		maven {url = "http://files.minecraftforge.net/maven"}
+	}
+	dependencies {
+		classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+	}
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 def ENV = System.getenv()
 if (ENV.BUILD_NUMBER) {
-    version = mcver + "-" + modver + "-" + "${System.getenv().BUILD_NUMBER}"
+	version = mcver + "-" + modver + "-" + "${System.getenv().BUILD_NUMBER}"
 } else {
-    version = mcver + "-" + modver + "-CustomBuild"
+	version = mcver + "-" + modver + "-CustomBuild"
 }
 
 group = groupname
@@ -21,23 +21,19 @@ archivesBaseName = jarname
 
 sourceCompatibility = targetCompatibility = '1.8'
 compileJava {
-    sourceCompatibility = targetCompatibility = '1.8'
+	sourceCompatibility = targetCompatibility = '1.8'
 }
 
 minecraft {
-    version = mcver + "-" + forgever
-    runDir = "run"
-    mappings = mcpver
+	version = mcver + "-" + forgever
+	runDir = "run"
+	mappings = mcpver
 
-    replaceIn "SojournConstants.java"
-    replace "@version@", project.modver
-    replace "@mcversion@", project.mcver
-    replace "true", "false"
-    replace "@forgeversion@", project.forgever
-    
-    replaceIn "mcmod.info"
-    replace "@version@", project.modver
-    replace "@mcversion@", project.mcver
+	replaceIn "SojournConstants.java"
+	replace "@version@", project.modver
+	replace "@mcversion@", project.mcver
+	replace "true", "false"
+	replace "@forgeversion@", project.forgever
 }
 
 dependencies {
@@ -45,5 +41,12 @@ dependencies {
 }
 
 processResources {
-
+	from(sourceSets.main.resources.srcDirs) {
+		include 'mcmod.info'
+		expand '@version@': project.modver
+		expand '@mcversion@': project.mcver
+	}
+	from(sourceSets.main.resources.srcDirs) {
+		exclude 'mcmod.info'
+	}
 }
