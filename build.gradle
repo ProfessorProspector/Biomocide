@@ -30,12 +30,12 @@ minecraft {
     mappings = mcpver
 
     replaceIn "SojournConstants.java"
-    replace "@version@", project.version
+    replace "@version@", project.modver
     replace "@mcversion@", project.mcver
     replace "@forgeversion@", project.forgever
     
     replaceIn "mcmod.info"
-    replace "@version@", project.version
+    replace "@version@", project.modver
     replace "@mcversion@", project.mcver
 }
 
