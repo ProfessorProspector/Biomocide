@@ -1,0 +1,15 @@
+[
+  {
+    "modid": "sojourn",
+    "name": "Sojourn",
+    "description": "",
+    "version": "@version@",
+    "mcversion": "@mcversion@",
+    "url": "https://github.com/ProfessorProspector/Sojourn",
+    "authorList": [
+      "Prospector"
+    ],
+    "credits": "",
+    "logoFile": "logo.png"
+  }
+]
