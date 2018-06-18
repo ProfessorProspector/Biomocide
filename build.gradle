@@ -32,6 +32,7 @@ minecraft {
     replaceIn "SojournConstants.java"
     replace "@version@", project.modver
     replace "@mcversion@", project.mcver
+    replace "true", "false"
     replace "@forgeversion@", project.forgever
     
     replaceIn "mcmod.info"
